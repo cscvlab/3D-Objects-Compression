@@ -1,7 +1,7 @@
 # Highly Compressed 3D Object Coding based on Key Spheres
 
 ![image](imgs/Figure1.png)
-![image](imgs/Figure2.png)
+![image](imgs/Figure3.png)
 ## Getting started
 
 ### Ubuntu and CUDA version
