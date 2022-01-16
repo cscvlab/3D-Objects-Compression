@@ -11,8 +11,11 @@ Comparison of three implicit neural reconstruction methods (NI[1], NGLOD[2] and 
 [3] Marco Tarini, Nico Pietroni, Paolo Cignoni, Daniele Panozzo, and Enrico Puppo, "Practical quad mesh simplication," CGF, 29(2), 407-418, 2010.
 
 [4] Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and Xiaoyu Chi, “Sn-graph: a minimalist 3d object representation for classification,” in ICME, 2021.
-
-
+## Network
+![image](imgs/network.png)
+## Experiment
+![image](imgs/table1.png)
+![image](imgs/table2.png)
 ## Getting started
 
 ### Ubuntu and CUDA version
@@ -53,4 +56,5 @@ This code includes code derived from 3 third-party libraries
 https://github.com/nv-tlabs/nglod
 https://github.com/u2ni/ICML2021
 
-
+## License
+This project is licensed under the terms of the MIT license (see LICENSE for details).
