@@ -2,7 +2,7 @@
 
 This repository contains the implementation of the paper:
 
-Yuanzhan Li, Yuqi Liu, Yujie Lu, Siyu Zhang, Shen Cai∗, and Yanting Zhang. High-fidelity 3D Model Compression based on Key Spheres. accepted in Data Compression Conference (DCC) 2022 as a full paper.
+Yuanzhan Li, Yuqi Liu, Yujie Lu, Siyu Zhang, Shen Cai∗, and Yanting Zhang. High-fidelity 3D Model Compression based on Key Spheres. Accepted in Data Compression Conference (DCC) 2022 as a full paper.
 
 ## Methodology
 Training a specific network for each 3D model to predict the signed distance function (SDF), which individually embeds its shape, can realize compressed representation and reconstruction of objects by storing fewer network (and possibly latent) parameters. However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] to properly reconstruct complex objects with fewer network parameters. The methodology we adopt is to utilize explicit key spheres [3] as network input to reduce the difficulty of fitting global and local shapes. By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed method can significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1. Compared to the previous works, our method achieves the high-fidelity and high-compression coding and reconstruction for most of 3D objects in the test dataset.
@@ -28,7 +28,7 @@ In order to make a fair comparison with NI and NGLOD respectively, this 29D poin
 ![image](imgs/table1_git.png)
 
 ## Results
-For a mesh model, we provide the corresponding network model using DPLE branch. These models are trained with a 6*32 MLP and 128 key spheres as input by default. The network model files are placed at ./results/models/, and their naming rules are a_b_c_d.pth, where a is the number of key spheres, b and c are the number and size of MLP layers, and d is the data name. If b and c are omitted, 6*32 MLP is used. 
+For a mesh model, we provide the corresponding network model using DPLE branch. These models are trained with a 6∗32 MLP and 128 key spheres as input by default. The network model files are placed at ./results/models/, and their naming rules are a_b_c_d.pth, where a is the number of key spheres, b and c are the number and size of MLP layers, and d is the data name. If b and c are omitted, 6∗32 MLP is used. 
 
 Some reconstructed mesh models are also provided. They are reconstructed using the 128-resolution marching cube algorithm. You can find them in ./results/meshes/. Three models are shown below. More reconstructed results in Thingi32 dataset can be seen in Release files. 
 ![image](imgs/figure1_1.gif)
