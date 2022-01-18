@@ -4,14 +4,16 @@
 
 This repository contains the implementation of the paper:
 
-High-fidelity 3D Model Compression based on Key Spheres
-**DCC 2022 (Oral)**
-## Methodology
-Training a specific network for each 3D model to predict the signed distance function(SDF), which individually embeds its shape,  can realize compressed representationand reconstruction of objects by storing fewer network (and possibly latent) parame-ters.  However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] toproperly reconstruct complex objects with fewer network parameters.  The method-ology we adopt is to utilize explicit key spheres [3] as network input to reduce thedifficulty of fitting global and local shapes.  By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed methodcan significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1.  Compared to the previous works, our method achievesthe high-fidelity and high-compression 3D object coding and reconstruction.
+Yuanzhan Li, Yuqi Liu, Yujie Lu, Siyu Zhang, Shen Cai∗, and Yanting Zhang. High-fidelity 3D Model Compression based on Key Spheres. accepted in **Data Compression Conference (DCC) 2022 (full paper)**
 
-[1]  Thomas Davies,  Derek Nowrouzezahrai,  and Alec Jacobson,  “On the effectiveness ofweight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
-[2]  Towaki  Takikawa,  Joey  Litalien,  Kangxue  Yin,  Karsten  Kreis,  Charles  Loop,  DerekNowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometriclevel of detail:  real-time rendering with implicit 3d shapes,”  inCVPR, 2021.
-[3]  Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and XiaoyuChi,   “Sn-graph:  a  minimalist  3d  object  representation  for  classification,”   inICME,2021.
+## Methodology
+Training a specific network for each 3D model to predict the signed distance function (SDF), which individually embeds its shape, can realize compressed representation and reconstruction of objects by storing fewer network (and possibly latent) parameters. However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] to properly reconstruct complex objects with fewer network parameters. The methodology we adopt is to utilize explicit key spheres [3] as network input to reduce the difficulty of fitting global and local shapes. By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed method can significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1. Compared to the previous works, our method achieves the high-fidelity and high-compression coding and reconstruction for most of 3D objects in the test dataset.
+
+[1] Thomas Davies, Derek Nowrouzezahrai,  and Alec Jacobson,  “On the effectiveness ofweight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
+
+[2] Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten Kreis, Charles  Loop,  DerekNowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometriclevel of detail:  real-time rendering with implicit 3d shapes,” in CVPR, 2021.
+
+[3]  Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and XiaoyuChi,   “Sn-graph:  a  minimalist  3d  object  representation  for  classification,” in ICME, 2021.
 
 ## Network
 We propose that key spheres can be used as constraints to predict SDF values. The figure below shows the theory of our method and the difference from other methods in 2D image.
