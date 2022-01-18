@@ -28,7 +28,9 @@ In order to make a fair comparison with NI and NGLOD respectively, this 29D poin
 ![image](imgs/table1_git.png)
 
 ## Results
-For each mesh model, we generate the corresponding network model as its compression result. We also provide some reconstructed mesh models for demonstration. The reconstruction mesh models shown were all reconstructed using the 128-resolution marching cube algorithm, trained with a 6*32 MLP, 128 key spheres setup, and no hidden vectors were used. You can find them in ./results/meshes/ . The network model files are placed at ./results/models/, and their naming rules are a_b_c_d.pth, where a is the number of key spheres, b and c are the number and size of MLP layers, and d is the data name. If b and c are omitted, 6*32 MLP is used.
+For a mesh model, we provide the corresponding network model using DPLE branch. These models are trained with a 6*32 MLP and 128 key spheres as input by default. The network model files are placed at ./results/models/, and their naming rules are a_b_c_d.pth, where a is the number of key spheres, b and c are the number and size of MLP layers, and d is the data name. If b and c are omitted, 6*32 MLP is used. 
+
+Some reconstructed mesh models are also provided. They are reconstructed using the 128-resolution marching cube algorithm. You can find them in ./results/meshes/. Three models are shown below. More reconstructed results in Thingi32 dataset can be seen in Release files. 
 ![image](imgs/figure1_1.gif)
 ![image](imgs/figure1_2.gif)
 ![image](imgs/figure1_3.gif)
