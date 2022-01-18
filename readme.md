@@ -67,7 +67,8 @@ python modelmesher.py
 
 ## Explanation
 1. NeuralImplicit.py corresponds to the first architecture in the paper, NeuralImplicit_1.py corresponds to the second architecture.
-2. We provide sphere files for thingi10k objects.
+2. We provide sphere files for thingi10k objects at ./sphere/thingi10kSphere/.
+3. If you want to generate key spheres for your own models, check out https://github.com/cscvlab/SN-Graph
 
 ## Third-Party Libraries
 
