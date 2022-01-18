@@ -2,20 +2,33 @@
 
 ![image](imgs/Figure1.png)
 
-Comparison of three implicit neural reconstruction methods (NI[1], NGLOD[2] and OURS), a traditional mesh simplification method (QECD[3]) and the ground truth (GT). The number of storage parameters is shown in the parentheses. An MLP network with 8 hidden layers and $32$ nodes in each layer is used in NI.	The 32-dimensional latent vectors of 125 grid points and 4737 network parameters are stored in NGLOD. In QECD, the number of vertices and facets is manually controlled at about 2400, which represents about 7200 parameters. Three ground truth models with about 22K, 49K, 12K vertices and facets respectively, are shown in the fifth column from left to right. The 128 extracted key spheres[4] with 512 parameters, which are used as the input of our network, are displayed in the last column. Except for our method with the fewest parameters (7026), all other methods show obvious errors.
+This repository contains the implementation of the paper:
 
-[1] Thomas Davies, Derek Nowrouzezahrai, and Alec Jacobson, “On the effectiveness of weight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
+High-fidelity 3D Model Compression based on Key Spheres
+**DCC 2022 (Oral)**
 
-[2] Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten Kreis, Charles Loop, Derek Nowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometric level of detail: real-time rendering with implicit 3d shapes,” in CVPR, 2021.
+Training a specific network for each 3D model to predict the signed distance function(SDF), which individually embeds its shape,  can realize compressed representationand reconstruction of objects by storing fewer network (and possibly latent) parame-ters.  However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] toproperly reconstruct complex objects with fewer network parameters.  The method-ology we adopt is to utilize explicit key spheres [3] as network input to reduce thedifficulty of fitting global and local shapes.  By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed methodcan significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1.  Compared to the previous works, our method achievesthe high-fidelity and high-compression 3D object coding and reconstruction.
 
-[3] Marco Tarini, Nico Pietroni, Paolo Cignoni, Daniele Panozzo, and Enrico Puppo, "Practical quad mesh simplication," CGF, 29(2), 407-418, 2010.
+[1]  Thomas Davies,  Derek Nowrouzezahrai,  and Alec Jacobson,  “On the effectiveness ofweight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
+[2]  Towaki  Takikawa,  Joey  Litalien,  Kangxue  Yin,  Karsten  Kreis,  Charles  Loop,  DerekNowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometriclevel of detail:  real-time rendering with implicit 3d shapes,”  inCVPR, 2021.
+[3]  Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and XiaoyuChi,   “Sn-graph:  a  minimalist  3d  object  representation  for  classification,”   inICME,2021.
 
-[4] Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and Xiaoyu Chi, “Sn-graph: a minimalist 3d object representation for classification,” in ICME, 2021.
 ## Network
+We propose that key spheres can be used as constraints to predict SDF values. The figure below shows the theory of our method and the difference from other methods in 2D image.
+![image](imgs/figure2_git.png)
+This is our network structure.
 ![image](imgs/network.png)
 ## Experiment
-![image](imgs/table1.png)
-![image](imgs/table2.png)
+![image](imgs/figure6_git.png)
+![image](imgs/table1_git.png)
+
+##Results
+For each mesh model, we generate the corresponding network model as its compression result. We also provide some reconstructed mesh models for display. The mesh reconstruction mesh models shown are all reconstructed using the 128-resolution marching cube algorithm, the training setup are 6*32 MLP, 128 key balls, and no hidden vectors are used. You can find them under the results folder.
+![image](imgs/figure1_1.gif)
+![image](imgs/figure1_2.gif)
+![image](imgs/figure1_3.gif)
+
+
 ## Getting started
 
 ### Ubuntu and CUDA version
@@ -45,7 +58,7 @@ If you want to generate a reconstructed mesh through the MC algorithm
 python modelmesher.py 
 ```
 
-## Introduction
+## Explanation
 1. NeuralImplicit.py corresponds to the first architecture in the paper, NeuralImplicit_1.py corresponds to the second architecture.
 2. We provide ball files for thingi10k objects.
 
