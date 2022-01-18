@@ -6,7 +6,7 @@ This repository contains the implementation of the paper:
 
 High-fidelity 3D Model Compression based on Key Spheres
 **DCC 2022 (Oral)**
-
+## Methodology
 Training a specific network for each 3D model to predict the signed distance function(SDF), which individually embeds its shape,  can realize compressed representationand reconstruction of objects by storing fewer network (and possibly latent) parame-ters.  However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] toproperly reconstruct complex objects with fewer network parameters.  The method-ology we adopt is to utilize explicit key spheres [3] as network input to reduce thedifficulty of fitting global and local shapes.  By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed methodcan significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1.  Compared to the previous works, our method achievesthe high-fidelity and high-compression 3D object coding and reconstruction.
 
 [1]  Thomas Davies,  Derek Nowrouzezahrai,  and Alec Jacobson,  “On the effectiveness ofweight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
@@ -22,13 +22,20 @@ This is our network structure.
 ![image](imgs/figure6_git.png)
 ![image](imgs/table1_git.png)
 
-##Results
-For each mesh model, we generate the corresponding network model as its compression result. We also provide some reconstructed mesh models for display. The mesh reconstruction mesh models shown are all reconstructed using the 128-resolution marching cube algorithm, the training setup are 6*32 MLP, 128 key balls, and no hidden vectors are used. You can find them under the results folder.
+## Results
+For each mesh model, we generate the corresponding network model as its compression result. We also provide some reconstructed mesh models for demonstration. The reconstruction mesh models shown were all reconstructed using the 128-resolution marching cube algorithm, trained with a 6*32 MLP, 128 keyballs setup, and no hidden vectors were used. You can find them in ./results/meshes/ . The network models files are placed in different folders according to their corresponding paper`s figures.
 ![image](imgs/figure1_1.gif)
 ![image](imgs/figure1_2.gif)
 ![image](imgs/figure1_3.gif)
 
-
+## Dataset
+We use ShapeNet and Thingi10k datasets, both of which are available from their official website. Thingi32 is composed of 32 simple shapes in Thingi10K. ShapeNet150 contains 150 shapes in the ShapeNet dataset.
+### ShapeNet
+You can download them at https://shapenet.org/download/shapenetcore
+### Thingi10k
+You can download them at https://ten-thousand-models.appspot.com/
+### Thingi32 and ShapeNet150
+You can check their name at https://github.com/nv-tlabs/nglod/issues/4
 ## Getting started
 
 ### Ubuntu and CUDA version
