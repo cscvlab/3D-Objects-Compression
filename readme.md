@@ -1,25 +1,28 @@
 # High-fidelity 3D Model Compression based on Key Spheres
 
-![image](imgs/Figure1.png)
-
 This repository contains the implementation of the paper:
 
-Yuanzhan Li, Yuqi Liu, Yujie Lu, Siyu Zhang, Shen Cai∗, and Yanting Zhang. High-fidelity 3D Model Compression based on Key Spheres. accepted in **Data Compression Conference (DCC) 2022 (full paper)**
+Yuanzhan Li, Yuqi Liu, Yujie Lu, Siyu Zhang, Shen Cai∗, and Yanting Zhang. High-fidelity 3D Model Compression based on Key Spheres. accepted in Data Compression Conference (DCC) 2022 as a full paper.
 
 ## Methodology
 Training a specific network for each 3D model to predict the signed distance function (SDF), which individually embeds its shape, can realize compressed representation and reconstruction of objects by storing fewer network (and possibly latent) parameters. However, it is difficult for the state-of-the-art methods NI [1] and NGLOD [2] to properly reconstruct complex objects with fewer network parameters. The methodology we adopt is to utilize explicit key spheres [3] as network input to reduce the difficulty of fitting global and local shapes. By inputting the spatial information ofmultiple spheres which imply rough shapes (SDF) of an object, the proposed method can significantly improve the reconstruction accuracy with a negligible storage cost.An example is shown in Fig. 1. Compared to the previous works, our method achieves the high-fidelity and high-compression coding and reconstruction for most of 3D objects in the test dataset.
+![image](imgs/Fig1.png)
+
+As key spheres imply the rough shape and can impose constraints on local SDF values, the fitting difficulty of network is significantly reduced. Fig. 2 shows fitting SDF comparison of three methods to a 2D bunny image.
+![image](imgs/figure2_git.png)
 
 [1] Thomas Davies, Derek Nowrouzezahrai,  and Alec Jacobson,  “On the effectiveness ofweight-encoded neural implicit 3d shapes,” arXiv:2009.09808, 2020.
 
-[2] Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten Kreis, Charles  Loop,  DerekNowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometriclevel of detail:  real-time rendering with implicit 3d shapes,” in CVPR, 2021.
+[2] Towaki Takikawa, Joey Litalien, Kangxue Yin, Karsten Kreis, Charles  Loop,  Derek Nowrouzezahrai, Alec Jacobson, Morgan McGuire, and Sanja Fidler, “Neural geometric level of detail:  real-time rendering with implicit 3d shapes,” in CVPR, 2021.
 
-[3]  Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and XiaoyuChi,   “Sn-graph:  a  minimalist  3d  object  representation  for  classification,” in ICME, 2021.
+[3]  Siyu Zhang, Hui Cao, Yuqi Liu, Shen Cai, Yanting Zhang, Yuanzhan Li, and Xiaoyu Chi,   “SN-Graph:  a  minimalist  3d  object  representation  for  classification,” in ICME, 2021.
+
+[4] M. Tarini, N. Pietroni, P. Cignoni, D. Panozzo, and E. Puppo, “Practical quad mesh simplification,” CGF, 29(2), 407–418, 2010.
 
 ## Network
-We propose that key spheres can be used as constraints to predict SDF values. The figure below shows the theory of our method and the difference from other methods in 2D image.
-![image](imgs/figure2_git.png)
-This is our network structure.
+In order to make a fair comparison with NI and NGLOD respectively, this 29D point feature can be extracted in direct and latent ways based on key spheres. The direct point feature extraction (DPFE, see the upper branch of Fig. 3) only uses a single-layer MLP (4∗29) to upgrade the 4D input of each key sphere to a 29D feature. The latent point feature extraction (LPFE, see the lower branch in Fig. 3) is similar to the latent feature of grid points in NGLOD. The 29D sphere feature vector is obtained by training, which is stored in advance.
 ![image](imgs/network.png)
+
 ## Experiment
 ![image](imgs/figure6_git.png)
 ![image](imgs/table1_git.png)
