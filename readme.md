@@ -85,4 +85,4 @@ https://github.com/nv-tlabs/nglod
 https://github.com/u2ni/ICML2021
 
 ## License
-This project is licensed under the terms of the MIT license (see LICENSE for details).
+This project is licensed under the terms of the Apache License (see `LICENSE` for details).
