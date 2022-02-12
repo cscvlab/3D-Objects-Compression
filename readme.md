@@ -24,7 +24,7 @@ In order to make a fair comparison with NI and NGLOD respectively, this 29D poin
 ![image](imgs/network.png)
 
 ## Experiment
-![image-w200](imgs/figure6_git.png)
+![image](imgs/figure6_git.png)
 ![image](imgs/table1_git.png)
 
 ## Results
